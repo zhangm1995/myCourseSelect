@@ -1,0 +1,35 @@
+配置数据库
+runas /noprofile /env /user:postgres "cmd"
+
+psql -U postgres -d postgres
+
+initdb.exe -D d:\postgresql\data -E UTF-8 --locale=chs -U postgres -W
+
+pg_ctl -D d:\postgresql -l logfile start
+
+
+pg_ext error
+
+Check the path (try to start psql from commandline).
+uninstall the pg-gem: gem unistall pg
+and reinstall it: bundle install or gem install pg
+Next, you update your Gemfile: gem 'pg', '~> 0.21.0'. That's it.
+
+tzinfo error
+gem install tzinfo-data
+加入gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin]
+
+database error
+在database.yml文件中加入数据库的用户名和密码
+  username: postgres
+  password: 
+
+ExecJS::ProgramError in Homes#index
+将其更改为早期版本加入下面这一行叙述到Gemfile ：
+
+复制代码
+gem 'coffee-script-source', '1.8.0'
+然后重新安装该分发包的依赖关系，调整新Gem版本为：
+
+复制代码
+bundle update coffee-script-source
